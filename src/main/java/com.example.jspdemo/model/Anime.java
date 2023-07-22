@@ -16,7 +16,7 @@ public class Anime {
     @Column
     private int year;
 
-    private Anime() {
+    public Anime() {
 
     }
 
