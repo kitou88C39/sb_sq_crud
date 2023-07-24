@@ -12,8 +12,14 @@ uri="http://www.java.sun.com/jsp/jstl/core" %>
     rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
   />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery.3.5.1/jquery.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+  />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></script>
 
   <body>
     <div class="container">
@@ -58,5 +64,28 @@ uri="http://www.java.sun.com/jsp/jstl/core" %>
         </div>
       </form:form>
     </div>
+
+    <script th:inline="javascript">
+      window.onload = function(){
+          var msg = [[${messeage}]];
+          if(msg == "Save Success"){
+            Command:toastr["success"]("User created successfully!!")
+          } else if (msg == "Delete success"){
+            Command:toastr["success"]("User deleted successfully!!")
+          } else if (msg == "Delete Error"){
+            Command:toastr["Error"]("Some error occurred, couldn't delete user")
+        } else if (msg == "Edi Success"){
+            Command:toastr["success"]("User updated successfully!!")
+      }
+
+      toastr.option = {
+        "closeButton":true,
+        "debug": false,
+        "newestOnTop":false,
+        "progressBar":true,
+        "positionClass":"toast-top-right",
+
+      }
+    </script>
   </body>
 </head>
